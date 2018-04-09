@@ -11,9 +11,10 @@ using System;
 namespace Student_Enrollment.Migrations
 {
     [DbContext(typeof(Student_EnrollmentContext))]
-    partial class Student_EnrollmentContextModelSnapshot : ModelSnapshot
+    [Migration("20180409020443_newStudent")]
+    partial class newStudent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -12,8 +12,16 @@ namespace Student_Enrollment.Models
         public String CourseName {get;set;}
         public String Description { get; set; }
         public Student Student { get; set; } // matches with student because we will connect them.
-
-
-        //Need to create student/Course controller CRUD is in each.
     }
+
+    public enum CourseName
+    {
+        Math,
+        Science,
+        English,
+
+    }
+
+    //Need to create student/Course controller CRUD is in each.
+
 }

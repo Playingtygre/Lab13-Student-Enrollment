@@ -13,6 +13,7 @@ using Student_Enrollment.Models;
 namespace Student_Enrollment
 {
     public class Startup
+
     {
         //THIS IS NEEDED IN ORDER TO GET ENITY FRAMEWORK
         public IConfiguration Configuration { get; }
@@ -25,11 +26,13 @@ namespace Student_Enrollment
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
         public void ConfigureServices(IServiceCollection services)
         {
             //This is the pipeline adding middle ware.
             services.AddMvc();
 
+            //These are the 
             services.AddDbContext<Student_EnrollmentContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Student_EnrollmentContext")));
 
@@ -41,7 +44,12 @@ namespace Student_Enrollment
         {
             if (env.IsDevelopment())
             {
+                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("Home/Error");
             }
 
             app.UseStaticFiles();
