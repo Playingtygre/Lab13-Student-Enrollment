@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Student_Enrollment.Controllers
 {
-    public class StudentController : Controller
+    public class StudentController 
     {
-        private readonly 
-
+       
     }
 }
