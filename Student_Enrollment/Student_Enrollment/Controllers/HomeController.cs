@@ -10,11 +10,19 @@ namespace Student_Enrollment.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         // GET: /<controller>/
         public IActionResult Index()
         {
             //Methods inside controllers are actions
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Index(string StudentsListNames) // this is collected from index.cshtml
+        {
+            return View();
+        }
+
     }
 }
