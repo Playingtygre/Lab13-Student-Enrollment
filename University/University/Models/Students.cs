@@ -12,6 +12,5 @@ namespace University.Models
         public DateTime DOB { get; set; }
         public string city { get; set; }
         public string Class { get; set; }
-
     }
 }
