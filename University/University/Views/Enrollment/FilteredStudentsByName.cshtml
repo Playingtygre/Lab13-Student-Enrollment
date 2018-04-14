@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model List<University.Models.Student>
+
+@if (Model.Count == 0)
+{
+    <h1> Student is not found here </h1>
+    <a asp-controller="Enrollment" asp-action="ViewAllStudents">Go Back</a>
+
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Class</th>
+                <th> Date of Bith</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+            <tr>
+                <td>@student.FirstName </td>
+                <td>@student.LastName</td>
+                <td>@student.Class </td>
+                <td>@student.DOB </td>
+                <td>@student.City </td>
+            </tr>
+
+            }
+        </tbody>
+    </table>
 }
