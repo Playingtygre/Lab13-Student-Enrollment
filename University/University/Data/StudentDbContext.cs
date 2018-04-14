@@ -11,7 +11,7 @@ namespace University.Data
     {
         public StudentDbContext(DbContextOptions<StudentDbContext> options) : base(options) { }
 
-        public DbSet<Students> Students { get; set; }
+        public DbSet<Student> Students { get; set; }
 
     }
 }
