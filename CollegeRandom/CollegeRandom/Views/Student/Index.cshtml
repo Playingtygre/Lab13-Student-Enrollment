@@ -1,0 +1,51 @@
+﻿@model CollegeRandom.Models.StudentViewModel
+
+
+<h1>Students</h1>
+
+<p><a asp-controller="Student" asp-action="Index" method="get"></a></p>
+
+<form action="/" method="post">
+    <p>
+        <select asp-for="StudentName" asp-items="Model.firstName">
+            <option value="">All Students</option>
+        </select>
+        Title <input type="text" name="SearchString"/>
+        <input type="submit" value="Filter"/>
+    </p>
+
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.students[0].FirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.students[0].LastName)</th>
+            <th>@Html.DisplayNameFor(model => model.students[0].Course)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prop in Model.students)
+        {
+        <tr>
+            <td>@Html.DisplayFor(ModelItem => prop.FirstName)</td>
+            <td>@Html.DisplayFor(ModelItem => prop.LastName)</td>
+            <td>@Html.DisplayFor(ModelItem => prop.Course)</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@prop.ID">Edit</a>
+                <a asp-action="Details" asp-route-id="@prop.ID">Details</a>
+                <a asp-action="Delete" asp-route-id="@prop.ID">Delete</a>
+
+            </td>
+
+        </tr>
+
+         }
+
+
+    </tbody>
+
+
+
+</table>
