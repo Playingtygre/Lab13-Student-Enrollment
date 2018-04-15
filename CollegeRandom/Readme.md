@@ -21,7 +21,7 @@ nd the fact that it's an assignment for a Code Fellows 401 class. (i.e. What's y
 
 ## Example
 
-![alt text](http://url/to/img.png)
+![website](http://collegerandom20180415115518.azurewebsites.net)
 
 <!-- Show them what looks like and how how to use the application.  -->
 
