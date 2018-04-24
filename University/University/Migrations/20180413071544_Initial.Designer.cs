@@ -10,7 +10,7 @@ using University.Data;
 
 namespace University.Migrations
 {
-    [DbContext(typeof(StudentDbContext))]
+    [DbContext(typeof(SchoolContext))]
     [Migration("20180413071544_Initial")]
     partial class Initial
     {
