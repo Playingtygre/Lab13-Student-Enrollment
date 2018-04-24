@@ -22,7 +22,7 @@ namespace Student_Enrollment.Controllers
         }
 
         /// <summary>
-        /// /
+        /// Query Method for finding a course
         /// </summary>
         /// <param name="course"></param>
         /// <param name="searchString"></param>
@@ -53,6 +53,14 @@ namespace Student_Enrollment.Controllers
 
             return View(courseNamesVM);
         }
+
+        /// <summary>
+        /// Async method for searching for Enrollment
+        /// </summary>
+        /// <param name="course"></param>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
+        /// 
         public async Task<IActionResult> Enrolled(string course, string searchString)
         {
             IQueryable<string> enrolledQuery = from e in _context.Student
@@ -78,6 +86,13 @@ namespace Student_Enrollment.Controllers
             return View(studentsVM);
         }
 
+
+        /// <summary>
+        /// async method for details about course
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -100,6 +115,12 @@ namespace Student_Enrollment.Controllers
             return View();
         }
 
+        /// <summary>
+        /// async method for creating course usinging a bind
+        /// </summary>
+        /// <param name="course"></param>
+        /// <returns></returns>
+        /// 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Name,Level,Instructor")] Course course)
@@ -113,6 +134,7 @@ namespace Student_Enrollment.Controllers
             return View(course);
         }
 
+        //Method for finding course by ID
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -130,6 +152,12 @@ namespace Student_Enrollment.Controllers
             return View(course);
         }
 
+        /// <summary>
+        /// After finding by Id allowing for edit
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="course"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Level,Instructor")] Course course)
@@ -164,6 +192,7 @@ namespace Student_Enrollment.Controllers
             return View(course);
         }
 
+        //delete method
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

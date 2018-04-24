@@ -60,6 +60,7 @@ namespace Student_Enrollment.Controllers
                 return NotFound();
             }
 
+            // LINQ statment for every c in student looks for a id in student
             var student = await _context.Student.SingleOrDefaultAsync(c => c.ID == id);
 
             if (student == null)
@@ -69,11 +70,22 @@ namespace Student_Enrollment.Controllers
             return View(student);
         }
 
+        /// <summary>
+        /// Create method
+        /// </summary>
+        /// <returns></returns>
+       
         //Create I action result
         public IActionResult Create()
         {
             return View();
         }
+
+        /// <summary>
+        /// Create method for student IF there is a vaild student in that ID
+        /// </summary>
+        /// <param name="student"></param>
+        /// <returns></returns>
 
         //PosT method using _context save changes 
         [HttpPost]
@@ -92,10 +104,11 @@ namespace Student_Enrollment.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Async method for looking at and editing if a student is avaiable  
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        
         public async Task<IActionResult> Edit (int? id)
         {
             if (id == null)
@@ -113,11 +126,12 @@ namespace Student_Enrollment.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Async method for finding student by ID, If they exsits then allow to add to database
         /// </summary>
         /// <param name="id"></param>
         /// <param name="student"></param>
         /// <returns></returns>
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName,LastName,Course")] Student student)
@@ -151,6 +165,11 @@ namespace Student_Enrollment.Controllers
 
             return View(student);
         }///////////////////////////////////////////
+        /// <summary>
+        /// Async Delete method for finding by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -170,10 +189,11 @@ namespace Student_Enrollment.Controllers
         }
         
         /// <summary>
-        /// 
+        /// async Method for delete method
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmation(int id)
@@ -184,6 +204,11 @@ namespace Student_Enrollment.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// If student ID is found pulls students by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         private bool StudentExists(int id)
         {
             return _context.Student.Any(c => c.ID == id);
