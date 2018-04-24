@@ -1,8 +1,8 @@
 ﻿@model Student_Enrollment.Models.Student
-
+@{ }
 <h2> New student </h2>
 
-<form action="Create" method="post">
+<form asp-action="Create">
     <label asp-for="FirstName"></label>
     <input asp-for="FirstName" />
     <span asp-validation-for="FirstName"></span>
@@ -11,14 +11,22 @@
     <input asp-for="LastName" />
     <span asp-validation-for="LastName"></span>
 
+    
     <label asp-for="Course"></label>
     <input asp-for="Course" />
     <span asp-validation-for="Course"></span>
+       
+    <!--
+        <label asp-for="Course">
+            <option value="" disabled="disabled" selected="selected">Select a class</option>
+            <option value="Math">Math</option>
+            <option value="English"> English</option>
+            <option value="Science">Science</option>
+            <option value="Physical Education">Physical Education</option>
+        </label>
+      -->
 
+        <input type="submit" value="Create New Student" />
+    </form>
 
-
-
-    <input type="submit" value="Create New Student" />
-</form>
-
-<a asp-action="index">Back</a>
+    <a asp-action="index">Back</a>
