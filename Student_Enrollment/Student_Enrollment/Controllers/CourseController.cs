@@ -53,6 +53,148 @@ namespace Student_Enrollment.Controllers
 
             return View(courseNamesVM);
         }
+        public async Task<IActionResult> Enrolled(string course, string searchString)
+        {
+            IQueryable<string> enrolledQuery = from e in _context.Student
+                                               orderby e.Course
+                                               select e.Course;
+
+            var enrolled = from e in _context.Student
+                           select e;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                enrolled = enrolled.Where(e => e.Course.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(course))
+            {
+                enrolled = enrolled.Where(e => e.Course == course);
+            }
+
+            var studentsVM = new CourseViewModel();
+            studentsVM.student = new SelectList(await enrolledQuery.Distinct().ToListAsync());
+            studentsVM.students = await enrolled.ToListAsync();
+
+            return View(studentsVM);
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Course.SingleOrDefaultAsync(c => c.ID == id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name,Level,Instructor")] Course course)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(course);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(course);
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Course.SingleOrDefaultAsync(c => c.ID == id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Level,Instructor")] Course course)
+        {
+            if (id != course.ID)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(course);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CourseExists(course.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToAction("Index");
+
+            }
+
+            return View(course);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Course.SingleOrDefaultAsync(c => c.ID == id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmation(int id)
+        {
+            var course = await _context.Course.SingleOrDefaultAsync(c => c.ID == id);
+            _context.Course.Remove(course);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool CourseExists(int id)
+        {
+            return _context.Course.Any(c => c.ID == id);
+        }
 
 
 
