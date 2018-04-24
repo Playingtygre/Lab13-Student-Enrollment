@@ -14,24 +14,30 @@
     </p>
 </form>
 
+<table>
+    @Html.DisplayNameFor(Model => Model.courses[0].Name)
+    @Html.DisplayNameFor(Model => Model.courses[0].Level)
+    @Html.DisplayNameFor(Model => Model.courses[0].Instructor)
 
-@Html.DisplayNameFor(Model => Model.courses[0].Name)
-@Html.DisplayNameFor(Model => Model.courses[0].Level)
-@Html.DisplayNameFor(Model => Model.courses[0].Instructor)
+</table>
 
-@foreach (var prop in Model.courses)
-{
 
-    @Html.DisplayFor(ModelItem => prop.Name)
-    @Html.DisplayFor(ModelItem => prop.Level)
-    @Html.DisplayFor(ModelItem => prop.Instructor)
+    @foreach (var prop in Model.courses)
+    {
+<table>
+   <thead>
+       <tr>
+        <th>@Html.DisplayFor(ModelItem => prop.Name)</th>
+        <th>@Html.DisplayFor(ModelItem => prop.Level)</th>
+        <th>@Html.DisplayFor(ModelItem => prop.Instructor)</th>
+    </tr>
+    <thead>
+</table>
+        <a asp-action="Enrolled" asp-route-id="@prop.ID">View Students</a>
+        <a asp-action="Edit" asp-route-id="@prop.ID">View Students</a>
+        <a asp-action="Details" asp-route-id="@prop.ID">View Students</a>
+        <a asp-action="Delete" asp-route-id="@prop.ID">View Students</a>
 
-    <a asp-action="Enrolled" asp-route-id="@prop.ID">View Students</a>
-    <a asp-action="Edit" asp-route-id="@prop.ID">View Students</a>
-    <a asp-action="Details" asp-route-id="@prop.ID">View Students</a>
-    <a asp-action="Delete" asp-route-id="@prop.ID">View Students</a>
-
-}
-
+    }
 
 <a asp-action="Index">Back</a>

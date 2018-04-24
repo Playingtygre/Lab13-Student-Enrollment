@@ -27,7 +27,7 @@ namespace Student_Enrollment
         {
             services.AddMvc();
             //insertDB here
-            services.AddDbContext<School_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Production")));
+            services.AddDbContext<School_Context>(options => options.UseSqlServer(Configuration.GetConnectionString("School_Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
