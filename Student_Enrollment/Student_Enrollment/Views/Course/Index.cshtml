@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model Student_Enrollment.Models.CourseViewModel
+
+<h2>Course</h2>
+
+<p> <a asp-action="Create"> Create a new Course</a></p>
+
+<form asp-controller="Course" asp-action="Index" method="get">
+    <p>
+        <select asp-for="CourseName" asp-items="Model.name">
+            <option value=""> All </option>
+        </select>
+        <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
+@Html.DisplayNameFor(Model => Model.courses[0].Name)
+@Html.DisplayNameFor(Model => Model.courses[0].Level)
+@Html.DisplayNameFor(Model => Model.courses[0].Instructor)
+
+@foreach (var prop in Model.courses)
+{
+
+    @Html.DisplayFor(ModelItem => prop.Name)
+    @Html.DisplayFor(ModelItem => prop.Level)
+    @Html.DisplayFor(ModelItem => prop.Instructor)
+
+    <a asp-action="Enrolled" asp-route-id="@prop.ID">View Students</a>
+    <a asp-action="Edit" asp-route-id="@prop.ID">View Students</a>
+    <a asp-action="Details" asp-route-id="@prop.ID">View Students</a>
+    <a asp-action="Delete" asp-route-id="@prop.ID">View Students</a>
+
 }
+
+
+<a asp-action="Index">Back</a>

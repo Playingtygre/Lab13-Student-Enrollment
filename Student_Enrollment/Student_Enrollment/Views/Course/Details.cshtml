@@ -1,5 +1,7 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Student_Enrollment.Models.Course
+
+@Html.DisplayNameFor(Course => Course.Name)
+@Html.DisplayNameFor(Course => Course.Level)
+@Html.DisplayNameFor(Course => Course.Instructor)
+
+<a asp-action="Index">Back</a>
