@@ -10,7 +10,7 @@ using University.Data;
 
 namespace University.Migrations
 {
-    [DbContext(typeof(StudentDbContext))]
+    [DbContext(typeof(SchoolContext))]
     partial class StudentDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

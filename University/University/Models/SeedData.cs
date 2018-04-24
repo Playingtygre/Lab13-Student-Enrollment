@@ -3,54 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using University.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace University.Models
 {
-    public static class SeedData
+    public class SeedData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new StudentDbContext(
-                serviceProvider.GetRequiredService<DbContextOptions<StudentDbContext>>()))
+
+            using (var context = new SchoolContext(
+                serviceProvider.GetRequiredService<DbContextOptions<SchoolContext>>()))
             {
-                if (context.Students.Any())
+                if (context.Course.Any())
                 {
                     return;
                 }
 
-                context.Students.AddRange(
-                    new Student
+                context.Course.AddRange
+                    (
+                    new Course
                     {
-                        FirstName= "Ash",
-                        LastName="Ketchum",
-                        Class = "superfly",
-                        DOB = DateTime.Parse("1989-1-11"),
+                        Name = "MATH",
+                        Instructor = "Tim",
+                        Level = 500,
                     }
 
-                    new Student
-                    {
-                        FirstName = "Ashly",
-                        LastName = "booy",
-                        Class = "funny mate",
-                        DOB = DateTime.Parse("1989-1-11"),
-                    }
-
-
-
-
-
-                    );
-
+                  );
                 context.SaveChanges();
+
+
+
+
+
 
             }
 
-            
-
         }
-   
+
 
     }
 }

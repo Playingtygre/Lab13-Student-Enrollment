@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using University.Data;
 
+
 namespace University
 {
     public class Startup
@@ -27,7 +28,7 @@ namespace University
         {
             services.AddMvc();
 
-            services.AddDbContext<StudentDbContext>(options =>
+            services.AddDbContext<SchoolContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
@@ -37,15 +38,22 @@ namespace University
         {
             if (env.IsDevelopment())
             {
+                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("Home/Error");
             }
 
             app.UseMvcWithDefaultRoute();
             app.UseStaticFiles();
 
-            app.Run(async (context) =>
+            app.UseMvc(routes =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

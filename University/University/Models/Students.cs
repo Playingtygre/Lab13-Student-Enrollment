@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace University.Models
 {
     public class Student
     {
         public int ID { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; } 
-        public DateTime DOB { get; set; }
-        public string City { get; set; }
-        public string Class { get; set; }
+
+        [Display(Name = "First Name")]
+        [StringLength(30, MinimumLength = 1)]
+        [Required]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        [StringLength(30, MinimumLength = 1)]
+        [Required]
+        public string LastName { get; set; }
+
+        [StringLength(30, MinimumLength = 1)]
+        [Required]
+        public string Course { get; set; }
     }
 }
