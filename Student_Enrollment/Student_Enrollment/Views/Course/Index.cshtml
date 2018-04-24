@@ -24,13 +24,15 @@
 
     @foreach (var prop in Model.courses)
     {
-  <table>
-
-        @Html.DisplayFor(ModelItem => prop.Name)
-        @Html.DisplayFor(ModelItem => prop.Level)
-        @Html.DisplayFor(ModelItem => prop.Instructor)
-
-  </table>
+<table>
+   <thead>
+       <tr>
+        <th>@Html.DisplayFor(ModelItem => prop.Name)</th>
+        <th>@Html.DisplayFor(ModelItem => prop.Level)</th>
+        <th>@Html.DisplayFor(ModelItem => prop.Instructor)</th>
+    </tr>
+    <thead>
+</table>
         <a asp-action="Enrolled" asp-route-id="@prop.ID">View Students</a>
         <a asp-action="Edit" asp-route-id="@prop.ID">View Students</a>
         <a asp-action="Details" asp-route-id="@prop.ID">View Students</a>
