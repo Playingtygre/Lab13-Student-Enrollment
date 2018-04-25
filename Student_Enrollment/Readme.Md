@@ -1,14 +1,22 @@
-## Project Name
+## Student Enrollment
+So this is a web appilcation that allows Student and courses to be created and searched.
+This is a live production databse hosted using Microsoft Azure.
 
+
+
+![STUDENT ENROLLMENT](http://studentenrollment20180423073542.azurewebsites.net/)
 ## Author:
 Tiger Hsu
 
 ## Version:
-1.0.0 
+3.0.0 
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyo
-nd the fact that it's an assignment for a Code Fellows 401 class. (i.e. What's your problem domain?) -->
+This application uses alot of MVC concepts that we have learned during my third week at CodeFellows.
+CRUD methods; CREATING, READING, AND UPdate. This is all performed using the Microsoft SQL.
+using students as an example an administator can view students or courses.
+
+
 
 ## Getting Started
 1. Clone the repository to your local machine.
@@ -26,9 +34,11 @@ nd the fact that it's an assignment for a Code Fellows 401 class. (i.e. What's y
  - C# ASP.NET Core application.
  - MVC architectural design pattern.
  - Entity Framework - built in Visual Studio
-
+ - Azure FrameWork
 
 ## Attribution
+Philip Werner
+.NET tutorial
 
 
 ## Resources
@@ -38,6 +48,5 @@ Microsoft Docs
 ## License
 MIT License
 
-/* Code modified from function sortTableArray obtained from  */
-
 ## Change Log
+4/24/18
