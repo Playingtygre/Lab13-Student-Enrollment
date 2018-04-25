@@ -4,7 +4,7 @@ This is a live production databse hosted using Microsoft Azure.
 
 
 
-![STUDENT ENROLLMENT](http://studentenrollment20180423073542.azurewebsites.net/)
+(http://studentenrollment20180423073542.azurewebsites.net/)
 ## Author:
 Tiger Hsu
 
@@ -26,7 +26,7 @@ using students as an example an administator can view students or courses.
 
 ## Example
 
-![alt text](http://url/to/img.png)
+![alt text](StudentEnrollment.JPG)
 
 <!-- Show them what looks like and how how to use the application.  -->
 
