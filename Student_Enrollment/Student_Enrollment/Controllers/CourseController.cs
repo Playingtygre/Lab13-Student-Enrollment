@@ -53,6 +53,21 @@ namespace Student_Enrollment.Controllers
 
             return View(courseNamesVM);
         }
+
+
+        /*
+        public Task<ViewResult> Index(object iD, int v1, string v2, string v3)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ViewResult> Index(object aspDotNetCore, int v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+
+        */
+
         public async Task<IActionResult> Enrolled(string course, string searchString)
         {
             IQueryable<string> enrolledQuery = from e in _context.Student
